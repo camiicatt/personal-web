@@ -1,0 +1,519 @@
+/* Full viewport split layout */
+
+.page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000000;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Mono",
+    "Fira Code", monospace;
+}
+
+/* LEFT HALF */
+
+.left-panel {
+  flex: 1;                /* exactly half */
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.left-header {
+  margin-bottom: 3rem;
+}
+
+.file-label {
+  font-size: 0.9rem;
+  margin: 0 0 1.8rem 0;
+  color: #9ca3af;
+}
+
+.name-block {
+  margin-bottom: 1.5rem;
+}
+
+.name {
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  margin: 0;
+}
+
+.role {
+  font-size: 1rem;
+  margin: 0.35rem 0 0 0;
+  color: #d1d5db;
+}
+
+.left-main {
+  flex: 1;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: #6b7280;
+  margin: 0 0 0.75rem 0;
+}
+
+.exp-row {
+  display: flex;
+  align-items: baseline;
+  font-size: 0.95rem;
+  margin-top: 1rem;          /* space above each job */
+  margin-bottom: 0.15rem;
+  font-weight: 600;          /* make headers bold */
+}
+
+.exp-label {
+  display: inline-block;
+  width: 7rem;
+  color: #f9fafb;            /* brighter */
+}
+
+.exp-detail {
+  margin: 0 0.5rem 0 0.5rem;
+  color: #e5e7eb;
+  font-weight: 600;          /* bold role too */
+}
+
+.exp-time {
+  margin-left: auto;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.about-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 30rem;
+  color: #e5e7eb;
+}
+
+.left-footer {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.95rem;
+  padding-top: 2rem;
+  color: #d1d5db;
+}
+
+.left-footer a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.12rem;
+}
+
+.left-footer a:hover {
+  border-color: currentColor;
+}
+
+/* RIGHT HALF */
+
+.right-panel {
+  flex: 1;              /* exactly half */
+  position: relative;
+  height: 100%;
+}
+
+/* Canvas should fill the right half completely */
+.right-panel canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Responsive: stack on very small screens */
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  .right-panel {
+    height: 45vh;
+  }
+}
+
+
+/* boxes and sliding effect */
+
+/* ---- Section buttons (left side) ---- */
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section-toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.section-toggle-icon {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+/* hover underline */
+.section-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  width: 0;
+  background: #e5e7eb;
+  transition: width 0.2s ease;
+}
+
+.section-toggle:hover::after {
+  width: 100%;
+}
+
+/* ---- Gamey modal overlay ---- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* pixel window */
+.modal-window {
+  width: min(700px, 90vw);
+  max-height: 80vh;              /* cap the overall height */
+  background: #020617;
+  color: #e5e7eb;
+  border: 2px solid #38bdf8;
+  box-shadow:
+    0 0 0 2px #020617,
+    0 0 0 4px #38bdf8,
+    0 12px 40px rgba(15, 23, 42, 0.9);
+  border-radius: 6px;
+  padding: 0;
+  display: flex;                 /* key */
+  flex-direction: column;        /* key */
+  overflow: hidden;              /* hide overflow outside the box */
+  font-family: "SF Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  animation: modal-pop 0.16s ease-out;
+}
+
+
+/* top bar like an old window */
+.modal-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  padding: 0.45rem 0.85rem;
+  border-bottom: 2px solid #38bdf8;
+}
+
+.modal-top-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #bae6fd;
+}
+
+.modal-close {
+  border: 1px solid #38bdf8;
+  background: #020617;
+  color: #e5e7eb;
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #38bdf8;
+  color: #020617;
+}
+
+/* inner content */
+.modal-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0.9rem 1rem 0.4rem 1rem;
+  color: #f9fafb;
+}
+
+.modal-body {
+  padding: 0 1rem 1rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-y: auto;              /* scroll INSIDE here */
+  max-height: calc(80vh - 2.5rem); /* 80vh minus top bar & padding */
+}
+
+
+.detail-text {
+  margin: 0.2rem 0 0.4rem 7rem;  /* indent to line up under text, not label */
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #9ca3af;                /* softer color so headers pop */
+  font-weight: 400;
+}
+
+/* reuse existing exp-row but it will look good inside too */
+.project-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.project-title {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.project-meta {
+  font-size: 0.8rem;
+  margin: 0.15rem 0 0 0;
+  color: #9ca3af;
+}
+
+.project-time {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Container for indented project links */
+.sub-projects {
+  margin-left: 1.25rem;       /* indent under PROJECTS */
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Base style for the PROJECTS header button (you probably already have close to this) */
+.section-toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* UNDERLINE for big sections */
+.section-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  width: 0;
+  background: #e5e7eb;
+  transition: width 0.2s ease;
+}
+
+.section-toggle:hover::after {
+  width: 100%;
+}
+
+/* ---- SUB PROJECT ROWS ---- */
+
+.sub-toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;          /* slightly smaller than main sections */
+  letter-spacing: 0.14em;     /* still “gamey” but a bit tighter */
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* UNDERLINE for sub-rows too */
+.sub-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;           /* a bit closer to the label */
+  height: 1px;
+  width: 0;
+  background: #e5e7eb;
+  transition: width 0.2s ease;
+}
+
+.sub-toggle:hover::after {
+  width: 100%;
+}
+
+/* Label + date styling inside sub rows */
+.sub-label {
+  font-weight: 500;
+}
+
+.sub-time {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  letter-spacing: 0.08em;
+}
+
+
+
+/* small pop animation */
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/*media query for proj boxes */
+
+/* 2-column media grid inside modal */
+.modal-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.modal-media-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  border-radius: 0.5rem;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.modal-media-img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 0.35rem;
+  margin-bottom: 0.3rem;
+}
+
+.modal-media-card-bigger {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  border-radius: 0.5rem;
+  padding: 0.35rem;
+
+  display: inline-block; /* key: shrink-wrap around content */
+}
+
+.modal-media-card-bigger img {
+  display: block;        /* kills extra inline whitespace */
+
+  /* CONTROL SIZE HERE */
+  max-width: 300px;      /* cap how big it can get */
+  width: 100%;           /* fill the container up to that cap */
+  height: auto;          /* keep aspect ratio */
+  object-fit: cover;     /* optional, only matters if you set fixed height */
+}
+
+
+.modal-media-caption {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* links row under images */
+.modal-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #38bdf8;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.modal-link-btn:hover {
+  background: #38bdf8;
+  color: #020617;
+  box-shadow: 0 4px 16px rgba(8, 47, 73, 0.9);
+  transform: translateY(-1px);
+}
+
+/* stack images on very small screens */
+@media (max-width: 520px) {
+  .modal-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
