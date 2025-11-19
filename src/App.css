@@ -136,7 +136,9 @@
 @media (max-width: 900px) {
   .page {
     flex-direction: column;
-    height: 100vh;
+    height: auto;        /* don’t lock it to one viewport height */
+    min-height: 100vh;   /* still at least full screen */
+    overflow: visible;   /* or overflow: auto; if you want scrolling */
   }
 
   .left-panel,
@@ -145,7 +147,8 @@
   }
 
   .right-panel {
-    height: 45vh;
+    height: 45vh;        /* keep if you like this, or use auto */
+    flex-shrink: 0;      /* don’t let it collapse */
   }
 }
 
