@@ -456,7 +456,7 @@ function App() {
 
             <p className="about-text">
               CS student at UTSA interested in AI, Data Science, and SWE programs that look beautiful and work well.
-              Always learning, always creating, becuase knowledge is the most powerful. 
+              Always learning, always creating, becuase knowledge is the most powerful tool. 
             </p>
           </section>
 
