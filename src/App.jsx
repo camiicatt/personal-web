@@ -92,7 +92,7 @@ function App() {
               <div className="exp-row">
                 <span className="exp-label">UTSA</span>
                 <span className="exp-detail">First Year Experince Ambassador</span>
-                <span className="exp-time">Dec 2023 → Jan 2025</span>
+                <span className="exp-time">Dec 2023 → Dec 2025</span>
               </div>
               <p className="detail-text">
               - Knowledgeable hub for new students navigating university life.
