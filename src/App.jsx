@@ -3,7 +3,6 @@ import "./App.css";
 import Dither from "./Dither";
 
 import idle1 from "./assets/camidusyRH.png";
-import idle2 from "./assets/camidusyRH.png"; //changing later
 
 import camipresenting from "./assets/camipresenting.png";
 import creativeagEx from "./assets/creativeagEx.png";
@@ -31,28 +30,45 @@ function App() {
         return (
           <>
             <h3 className="modal-title">EXPERIENCE</h3>
+
+            <div className="exp-row">
+              <span className="exp-label">UTSA SBDC</span>
+              <span className="exp-detail">
+                Business Development Intern, Marketing &amp; Web Design for UTSA SBDC
+              </span>
+              <span className="exp-time">Jan 2026 → Present</span>
+            </div>
+            <p className="detail-text">
+              - Facilitate leadership meetings to encourage structured discussion and alignment on business goals.
+            </p>
+            <p className="detail-text">
+              - Participate in client consultations, providing input on marketing strategy and web design recommendations.
+            </p>
+            <p className="detail-text">
+              - Collaborate on business development initiatives to improve client outreach and digital presence.
+            </p>
+
+
             <div className="modal-body">
               <div className="exp-row">
                 <span className="exp-label">434 Media</span>
                 <span className="exp-detail">UI/UX Front-End Developer </span>
-                <span className="exp-time">June 2025 → present</span>
+                <span className="exp-time">May 2025 → Aug 2025</span>
               </div>
               <p className="detail-text">
-              - Redesigned the Vemos Vamos website with responsive layouts for mobile and desktop, improving
-              navigation and increasing user engagement by 50%.
+              - Redesigned the Vemos Vamos website with responsive layouts for desktop
               </p>
               <p className="detail-text">
-              - Led the creation of an AI-powered personalization suite (chatbot + asset generator), cutting manual design
-              tasks by 70% and helping clients interact more effectively with the platform
+              - Built and led the creation of an AI-driven brand asset generator leveraging OpenAI for text and Hugging Face models for image adaptation, automating repetitive design tasks aligned with 434 Media’s brand guidelines and reducing creative team turnaround time on client visuals.
               </p>
               <p className="detail-text">
-              - Collaborated with designers and backend developers to implement new features using React, Next.js, and Tailwind CSS,
+              - Collaborated with Marketing team to implement new features using React, Next.js, and Tailwind CSS,
               </p>
 
               <div className="exp-row">
                 <span className="exp-label">Yahoo</span>
                 <span className="exp-detail">UI/UX Research & Engineering Lead</span>
-                <span className="exp-time">July 2025 (1-week Inovation Sprint)</span>
+                <span className="exp-time">July 2025 (1-week Innovation Sprint)</span>
               </div>
               <p className="detail-text">
               - Engineered a prototype enhancing YouTube’s platform with child-safe features inspired by YouTube Kids, including AI powered content filtering, parental controls, and curated recommendation logic.
@@ -64,7 +80,7 @@ function App() {
               <div className="exp-row">
                 <span className="exp-label">Experian</span>
                 <span className="exp-detail"> Product Development Consultant </span>
-                <span className="exp-time">June 2025 (1-week Inovation Sprint)</span>
+                <span className="exp-time">June 2025 (1-week Innovation Sprint)</span>
               </div>
               <p className="detail-text">
               - Directed a 4 member team to design a credit education platform projected to reach 30,000+ underserved users.
@@ -91,7 +107,7 @@ function App() {
 
               <div className="exp-row">
                 <span className="exp-label">UTSA</span>
-                <span className="exp-detail">First Year Experince Ambassador</span>
+                <span className="exp-detail">First Year Experience Ambassador</span>
                 <span className="exp-time">Dec 2023 → Dec 2025</span>
               </div>
               <p className="detail-text">
@@ -269,14 +285,10 @@ function App() {
           
                   {/* DESCRIPTION */}
                   <p className="detail-text">
-                  A modern, bilingual web application built with Next.js 15.4.6, featuring an integrated Culture Deck content management system powered by Airtable.
-
+                  A modern, bilingual web application built with Next.js 15.4.6
                   </p>
                   <p className="detail-text">
-                    - The application showcases dynamic content delivery with robust fallback systems and comprehensive internationalization support.
-                  </p>
-                  <p className="detail-text">
-                    - CloudFare Authentication
+                    - Developed with a focus on responsive design and user experience, the site features a sleek UI/UX that adapts seamlessly across devices.
                   </p>
 
                 </div>
