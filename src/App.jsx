@@ -701,7 +701,7 @@ function App() {
           >
             GitHub
           </a>
-          <a href="mailto:camille.rivera@utsa.edu">Email</a>
+          <a href="mailto:camille.rivera@my.utsa.edu">Email</a>
         </footer>
       </div>
 
