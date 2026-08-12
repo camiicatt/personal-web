@@ -692,7 +692,7 @@ function App() {
 
         <footer className="left-footer">
           <span>Links: </span>
-          <a href="www.linkedin.com/in/camille-louise-rivera/">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/camille-louise-rivera/">LinkedIn</a>
 
           <a
             href="https://github.com/camiicatt"
