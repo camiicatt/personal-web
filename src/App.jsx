@@ -10,6 +10,10 @@ import furrytails from "./assets/FurryTailsCoverArt.png";
 import vemosvamos from "./assets/vemosvamos.png";
 import group from "./assets/camillegorup.jpeg";
 import group2 from "./assets/camille2.jpeg";
+import TheGlassHeroStudents from "./assets/TheGlassHeroStudents.jpeg";
+import TheGlassHeroResearch from "./assets/TheGlassHeroResearch.png";
+import TheGlassHeroPaper from "./assets/TheGlassHeroPaper.pdf";
+import TheGlassHeroPaperPreview from "./assets/TheGlassHeroPaper.pdf";
 
 import camipxel from "./assets/PixelCamii.png"
 
@@ -31,12 +35,44 @@ function App() {
           <>
             <h3 className="modal-title">EXPERIENCE</h3>
 
+            <div className="exp-featured">
+              <div className="exp-row">
+                <span className="exp-label">USAA</span>
+
+                <span className="exp-detail">
+                  Software Engineering Intern
+                </span>
+
+                <span className="exp-time exp-current">
+                  May 2026 → Present
+                </span>
+              </div>
+
+              <p className="detail-text">
+                Developed three REST API endpoints and a Java/Spring Boot experience
+                layer powering the MSR Assistant UI for life insurance application and
+                quoting workflows.
+              </p>
+
+              <p className="detail-text exp-impact">
+                Launched functionality that improved MSR workflow efficiency by
+                <strong> 20% within its first week</strong>, supporting approximately
+                <strong> 1,500 life insurance applicants</strong>.
+              </p>
+
+              <p className="detail-text">
+                Delivered production changes through GitLab merge requests, code
+                reviews, tagging, CI/CD checks, and enterprise change-request
+                procedures.
+              </p>
+            </div>
+
             <div className="exp-row">
               <span className="exp-label">UTSA SBDC</span>
               <span className="exp-detail">
                 Business Development Intern, Marketing &amp; Web Design for UTSA SBDC
               </span>
-              <span className="exp-time">Jan 2026 → Present</span>
+              <span className="exp-time">Jan 2026 → May 2026</span>
             </div>
             <p className="detail-text">
               - Facilitate leadership meetings to encourage structured discussion and alignment on business goals.
@@ -47,7 +83,6 @@ function App() {
             <p className="detail-text">
               - Collaborate on business development initiatives to improve client outreach and digital presence.
             </p>
-
 
             <div className="modal-body">
               <div className="exp-row">
@@ -62,7 +97,7 @@ function App() {
               - Built and led the creation of an AI-driven brand asset generator leveraging OpenAI for text and Hugging Face models for image adaptation, automating repetitive design tasks aligned with 434 Media’s brand guidelines and reducing creative team turnaround time on client visuals.
               </p>
               <p className="detail-text">
-              - Collaborated with Marketing team to implement new features using React, Next.js, and Tailwind CSS,
+              - Collaborated with Marketing team to implement new features using React, Next.js, and Tailwind CSS
               </p>
 
               <div className="exp-row">
@@ -131,6 +166,97 @@ function App() {
           </>
         );
 
+        case "proj-ai-learning-agent":
+          return (
+            <>
+              <h3 className="modal-title"> TheGlassHero - Teaching and Visualizing Machine Learning  </h3>
+              <div className="modal-body">
+                {/* MEDIA GRID */}
+                <div className="modal-media-grid">
+                  <div className="modal-media-card">
+                    <img
+                      src={TheGlassHeroResearch}
+                      alt="Developing AI Tools Research Group"
+                      className="modal-media-img"
+                    />
+                    <p className="modal-media-caption">Developing AI Tools Research Group</p>
+                  </div>
+
+                  <div className="modal-media-card">
+                    <img
+                      src={TheGlassHeroStudents}
+                      alt="Students learning Machine Learning"
+                      className="modal-media-img"
+                    />
+                    <p className="modal-media-caption">Students playing TheGlassHero, having a fun time</p>
+                  </div>
+
+                  {/* THE GLASS HERO PNG VIEW */}
+                  <div className="research-paper-section">
+                    <div className="research-paper-header">
+                      <div>
+                        <span className="research-paper-tag">RESEARCH_PAPER.PDF</span>
+                        <h4 className="research-paper-title">
+                          TheGlassHero
+                        </h4>
+                      </div>
+
+                      <a
+                        href={TheGlassHeroPaper}
+                        download
+                        className="research-download-btn"
+                      >
+                        DOWNLOAD ↓
+                      </a>
+                    </div>
+
+                    <div className="research-abstract">
+                      <span className="research-abstract-label">ABSTRACT</span>
+                      <div className="research-abstract">
+  <span className="research-abstract-label">ABSTRACT</span>
+
+  <p>
+    Teaching machine learning (ML) to K–12 students is challenging
+    because supervised learning systems often hide the processes students
+    need to understand: how examples shape decisions, why models fail,
+    and how confidence relates to predictions. To make these ideas more
+    visible, we developed TheGlassHero, a short, game-based learning tool
+    for introducing supervised ML concepts to middle school students.
+  </p>
+
+  <p>
+    In TheGlassHero, students act as teachers guiding an AI character
+    through a dungeon environment. Through gameplay, students provide
+    training examples, observe the AI make decisions, view confidence
+    feedback, and encounter cases where the AI succeeds or fails. We
+    deployed TheGlassHero as part of a larger two-session AI learning
+    study with approximately 140 eighth-grade students.
+  </p>
+
+  <p>
+    We report formative evidence from matched pre/post responses,
+    TheGlassHero-specific post-survey items, feature feedback, classroom
+    observations, voice recordings, and gameplay recordings. Matched
+    responses suggest that students’ explanations shifted from general
+    descriptions of AI toward language involving learning, training,
+    examples, and data.
+  </p>
+
+  <p>
+    These findings suggest that visible AI decision-making can support
+    short AI literacy activities, but visibility alone is not enough. We
+    identify design lessons for future ML education tools, including the
+    need to pair decision visualization with structured scaffolding around
+    confidence, data quality, bias, and model failure.
+  </p>
+</div>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              </>
+        );
+        
         case "proj-creative-agent":
           return (
             <>
@@ -503,6 +629,14 @@ function App() {
 
   {/* INDENTED CLICKABLE PROJECTS */}
   <div className="sub-projects">
+    <button
+      className="sub-toggle"
+      onClick={() => openSection("proj-ai-learning-agent")}
+    >
+      <span className="sub-label">TheGlassHero: TEACHING MACHINE LEARNING</span>
+      <span className="sub-time"> Reasearch Paper and Process</span>
+    </button>
+
     <button
       className="sub-toggle"
       onClick={() => openSection("proj-idle-scholar")}
