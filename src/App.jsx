@@ -166,6 +166,41 @@ function App() {
           </>
         );
 
+        case "swe-ui-project-2026":
+          return (
+            <>
+              <h3 className="modal-title">SWE & UI/UX LIVE WEBSITE</h3>
+              <div className="modal-body">
+                <p className="detail-text">
+                  Developed a live website for a client as part of a Software Engineering course project. 
+                </p>
+                <p className="detail-text">
+                  – Scrum Master and API Engineer mananging a team of 5 developers
+                </p>
+                <p className="detail-text">
+                  – Built with React, Next.js, Tailwind CSS, and Supabase for database management and authentication
+                </p>
+                <p className="detail-text">
+                  - Users can create accounts, login, order (no payment)
+                  <p > - Admins can add to the menu, view orders, and manage users </p>
+                  - Implemented responsive design and user-friendly interfaces 
+                </p>
+
+                    {/* LINK */}
+                    <div className="modal-links-row">
+                    <a
+                    href="https://software-eng2026.vercel.app"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="modal-link-btn"
+                    >
+                      Website Link
+                    </a>
+                  </div>
+              </div>
+            </>
+          );
+
         case "proj-ai-learning-agent":
           return (
             <>
@@ -629,12 +664,20 @@ function App() {
 
   {/* INDENTED CLICKABLE PROJECTS */}
   <div className="sub-projects">
+
+    <button 
+      className="sub-toggle"
+      onClick={() => openSection("swe-ui-project-2026")}
+    >
+      <span className="sub-label">SWE & UI/UX LIVE WEBSITE</span>
+      <span className="sub-time">Scrum Master and API Engineer</span>
+    </button>
     <button
       className="sub-toggle"
       onClick={() => openSection("proj-ai-learning-agent")}
     >
       <span className="sub-label">TheGlassHero: TEACHING MACHINE LEARNING</span>
-      <span className="sub-time"> Reasearch Paper and Process</span>
+      <span className="sub-time">Reasearch Paper and Process</span>
     </button>
 
     <button
