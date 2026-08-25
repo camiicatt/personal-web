@@ -17,6 +17,17 @@ import TheGlassHeroPaperPreview from "./assets/TheGlassHeroPaper.pdf";
 
 import camipxel from "./assets/PixelCamii.png"
 
+const projectSections = [
+  { id: "proj-idle-scholar", label: "Idle Scholar" },
+  { id: "swe-ui-project-2026", label: "SWE & UI/UX" },
+  { id: "proj-ai-learning-agent", label: "TheGlassHero" },
+  { id: "proj-creative-agent", label: "Creative Agent" },
+  { id: "proj-vemosvamos", label: "VemosVamos" },
+  { id: "proj-yahoopress", label: "Yahoo Capstone" },
+  { id: "proj-furrytails", label: "FurryTails" },
+  { id: "proj-personal-web", label: "Personal Web" },
+];
+
 function App() {
   const [activeSection, setActiveSection] = useState(null); // 'experience' | 'projects' | 'about' | null
 
@@ -26,6 +37,17 @@ function App() {
 
   const closeSection = () => {
     setActiveSection(null);
+  };
+
+  const activeProjectIndex = projectSections.findIndex(
+    (project) => project.id === activeSection,
+  );
+
+  const browseProject = (direction) => {
+    const nextIndex =
+      (activeProjectIndex + direction + projectSections.length) %
+      projectSections.length;
+    setActiveSection(projectSections[nextIndex].id);
   };
 
   const renderModalContent = () => {
@@ -43,8 +65,8 @@ function App() {
                   Software Engineering Intern
                 </span>
 
-                <span className="exp-time exp-current">
-                  May 2026 → Present
+                <span className="exp-time">
+                  May 2026 → Aug 2026
                 </span>
               </div>
 
@@ -72,7 +94,7 @@ function App() {
               <span className="exp-detail">
                 Business Development Intern, Marketing &amp; Web Design for UTSA SBDC
               </span>
-              <span className="exp-time">Jan 2026 → May 2026</span>
+              <span className="exp-time">Jan 2026 → Present</span>
             </div>
             <p className="detail-text">
               - Facilitate leadership meetings to encourage structured discussion and alignment on business goals.
@@ -102,14 +124,17 @@ function App() {
 
               <div className="exp-row">
                 <span className="exp-label">Yahoo</span>
-                <span className="exp-detail">UI/UX Research & Engineering Lead</span>
-                <span className="exp-time">July 2025 (1-week Innovation Sprint)</span>
+                <span className="exp-detail">Capstone Project Participant</span>
+                <span className="exp-time">Jul 2025 · New York, NY</span>
               </div>
               <p className="detail-text">
-              - Engineered a prototype enhancing YouTube’s platform with child-safe features inspired by YouTube Kids, including AI powered content filtering, parental controls, and curated recommendation logic.
+              - Defined project goals using the SMART framework and created a high-level Agile roadmap with milestones and deliverables.
               </p>
               <p className="detail-text">
-              - Ran lightweight user testing with the SCRUM team (ages 6-12 and parents) to refine navigation, safety settings, and personalized recommendations in under 4 days.
+              - Assigned cross-functional team roles and responsibilities to simulate a real-world technology team structure.
+              </p>
+              <p className="detail-text">
+              - Practiced Scrum, UX research, and usability evaluation with guidance from Yahoo technical product managers and user research professionals.
               </p>
 
               <div className="exp-row">
@@ -171,6 +196,14 @@ function App() {
             <>
               <h3 className="modal-title">SWE & UI/UX LIVE WEBSITE</h3>
               <div className="modal-body">
+                <div className="website-preview">
+                  <iframe
+                    src="https://software-eng2026.vercel.app"
+                    title="SWE and UI/UX client website preview"
+                    loading="lazy"
+                  />
+                  <span className="website-preview-label">LIVE WEBSITE PREVIEW</span>
+                </div>
                 <p className="detail-text">
                   Developed a live website for a client as part of a Software Engineering course project. 
                 </p>
@@ -206,6 +239,24 @@ function App() {
             <>
               <h3 className="modal-title"> TheGlassHero - Teaching and Visualizing Machine Learning  </h3>
               <div className="modal-body">
+                <div className="website-preview">
+                  <iframe
+                    src="https://camiicatt.github.io/theGlassBox/"
+                    title="TheGlassHero live learning game preview"
+                    loading="lazy"
+                  />
+                  <span className="website-preview-label">LIVE GAME PREVIEW</span>
+                </div>
+                <div className="modal-links-row">
+                  <a
+                    href="https://camiicatt.github.io/theGlassBox/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="modal-link-btn modal-link-primary"
+                  >
+                    Try live game ↗
+                  </a>
+                </div>
                 {/* MEDIA GRID */}
                 <div className="modal-media-grid">
                   <div className="modal-media-card">
@@ -365,8 +416,20 @@ function App() {
           case "proj-idle-scholar":
             return (
               <>
-                <h3 className="modal-title">IDLE SCHOLAR (WIP)</h3>
+                <h3 className="modal-title">IDLE SCHOLAR · ACTIVE LIVE APP</h3>
                 <div className="modal-body">
+                  <div className="active-project-status">
+                    <span>● CURRENTLY BUILDING</span>
+                    <span>LIVE USERS · REGULAR UPDATES</span>
+                  </div>
+                  <div className="website-preview website-preview-phone">
+                    <iframe
+                      src="https://idlescholar.com"
+                      title="Idle Scholar phone web app preview"
+                      loading="lazy"
+                    />
+                    <span className="website-preview-label">LIVE PHONE APP PREVIEW</span>
+                  </div>
                   {/* MEDIA GRID */}
                   <div className="modal-media-grid">
                     <div className="modal-media-card">
@@ -381,6 +444,14 @@ function App() {
           
                   {/* LINKS ROW */}
                   <div className="modal-links-row">
+                    <a
+                      href="https://idlescholar.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="modal-link-btn modal-link-primary"
+                    >
+                      Try live app ↗
+                    </a>
                     <a
                       href="https://devpost.com/software/lockedin-28pzol"
                       target="_blank"
@@ -420,6 +491,14 @@ function App() {
               <>
                 <h3 className="modal-title">VEMOSVAMOS WEB</h3>
                 <div className="modal-body">
+                  <div className="website-preview">
+                    <iframe
+                      src="https://www.vemosvamos.com/"
+                      title="VemosVamos website preview"
+                      loading="lazy"
+                    />
+                    <span className="website-preview-label">LIVE WEBSITE PREVIEW</span>
+                  </div>
                   {/* MEDIA GRID */}
                   <div className="modal-media-grid">
                     <div className="modal-media-card-bigger">
@@ -509,7 +588,7 @@ function App() {
               case "proj-yahoopress":
                 return (
                   <>
-                    <h3 className="modal-title">YAHOO PRES</h3>
+                    <h3 className="modal-title">YAHOO CAPSTONE PROJECT</h3>
                     <div className="modal-body">
                       {/* MEDIA GRID */}
                       <div className="modal-media-grid">
@@ -545,7 +624,19 @@ function App() {
               
                       {/* DESCRIPTION */}
                       <p className="detail-text">
-                        Yahoo Presentation is a prototype enhancing YouTube’s platform with child-safe features inspired by YouTube Kids, including AI powered content filtering, parental controls, and curated recommendation logic.
+                        Selected for the Yahoo Capstone through UTSA’s Global Summer Institute, an on-site program in New York focused on product planning, Agile teamwork, and user research.
+                      </p>
+                      <p className="detail-text">
+                        – Defined project goals with the SMART framework and created a high-level Agile roadmap with deliverables and milestones.
+                      </p>
+                      <p className="detail-text">
+                        – Assigned Program Manager, Product Lead, and Engineering Lead responsibilities to model a cross-functional technology team.
+                      </p>
+                      <p className="detail-text">
+                        – Learned Scrum best practices from Yahoo technical product managers and practiced UX research and usability evaluation with Yahoo research professionals.
+                      </p>
+                      <p className="detail-text">
+                        – Participated in a live panel with Yahoo’s Rising Team about career paths, leadership, and innovation in a large technology company.
                       </p>
             
     
@@ -569,36 +660,6 @@ function App() {
             </>
           );
         
-      case "about":
-        return (
-          <>
-            <h3 className="modal-title">ABOUT</h3>
-            <div className="modal-body">
-
-            <div className="modal-media-card-bigger">
-                <img
-                  src={camipxel}
-                  alt="cami-pixel"
-                  className="modal-media-card-bigger-img"
-                />
-              <p className="modal-media-caption">Cami and her cats Suhsi and Burger</p>
-              
-             </div>
-
-
-
-              <p className="detail-text">
-                I’m a CS student at UTSA interested in deep learning, reasearch and cool UI. I like taking abstract ideas and turning them into
-                interfaces you can poke at, break, and learn from.
-              </p>
-              <p className="detail-text">
-                Right now I’m especially interested in model behavior under
-                limited data, agent design, and how to make technical work feel
-                playful instead of sterile.
-              </p>
-            </div>
-          </>
-        );
       default:
         return null;
     }
@@ -610,83 +671,162 @@ function App() {
       <div className="left-panel">
         <header className="left-header">
           <h1 className="file-label">camille.cv</h1>
-          <div className="name-block">
-            <h2 className="name">CAMILLE RIVERA</h2>
-            <h3 className="role">CS STUDENT · SOFTWARE ENG & LEARNING ALL ABOUT AI</h3>
+          <div
+            className="pixel-profile pixel-profile-header"
+          >
+            <span className="pixel-profile-bar">
+              <span>PLAYER_INFO.DAT</span>
+              <span aria-hidden="true">+</span>
+            </span>
+            <span className="pixel-profile-content">
+              <span className="pixel-profile-portrait">
+                <img src={camipxel} alt="Pixel portrait of Camille with her cats" />
+              </span>
+              <span className="pixel-profile-copy">
+                <strong>CAMILLE RIVERA</strong>
+                <span>CS · SWE · UI/UX</span>
+                <span className="pixel-profile-prompt">BUILDING GOOD LOOKING SOFTWARE</span>
+              </span>
+            </span>
           </div>
         </header>
 
         <main className="left-main">
 
         <section className="section">
-            <button
-              className="section-toggle"
-              onClick={() => openSection("about")}
-            >
+            <div className="section-toggle section-heading about-heading">
               <span>ABOUT</span>
-              <span className="section-toggle-icon">+</span>
-            </button>
+            </div>
 
-            <p className="about-text">
-              CS student at UTSA interested in AI, Data Science, and SWE programs that look beautiful and work well.
-              Always learning, always creating, becuase knowledge is the most powerful tool. 
-            </p>
+            <div className="about-snapshot">
+              <p className="about-lead">
+                I care about the UI people touch and the software that makes it work. I do my best work with passionate teams fixing real problems together.
+              </p>
+              <div className="about-signals" aria-label="What Camille cares about">
+                <span><b>01</b> UI WITH PURPOSE</span>
+                <span><b>02</b> SOFTWARE THAT WORKS</span>
+                <span><b>03</b> TEAMS THAT CARE</span>
+              </div>
+            </div>
           </section>
 
 
 
           {/* EXPERIENCE button */}
-          <section className="section">
+          <section className="section selected-experience">
+            <div className="section-toggle section-heading experience-heading">
+              <span>SELECTED EXPERIENCE</span>
+              <button
+                className="view-all-btn"
+                onClick={() => openSection("experience")}
+              >
+                VIEW ALL <span aria-hidden="true">→</span>
+              </button>
+            </div>
+
             <button
-              className="section-toggle"
+              className="experience-card experience-card-featured"
               onClick={() => openSection("experience")}
             >
-              <span>EXPERIENCE (theres more)</span>
-              <span className="section-toggle-icon">+</span>
+              <span className="experience-card-topline">
+                <span className="experience-type">SOFTWARE ENGINEERING</span>
+                <span className="experience-date">MAY–AUG 2026</span>
+              </span>
+              <span className="experience-card-main">
+                <strong>USAA</strong>
+                <span>Software Engineering Intern</span>
+                <span className="experience-arrow" aria-hidden="true">→</span>
+              </span>
+              <span className="experience-tech">REACT · SPRING BOOT · REST APIs</span>
+              <span className="experience-impact">Improved MSR workflow efficiency by 20%</span>
             </button>
 
-            {/* a couple of inline hints so it’s not empty */}
-            <div className="exp-row">
-              <span className="exp-label">UTSA</span>
-              <span className="exp-detail">Computer Science & Mathematics Minor </span>
-              <span className="exp-time">Grad Date: May 2027</span>
-              <span className="exp-time">GPA: 3.9</span>
-              <span className="exp-time">2023 → present</span>
+            <button className="experience-card" onClick={() => openSection("experience")}>
+              <span className="experience-card-topline">
+                <span className="experience-type">MARKETING · WEB DESIGN</span>
+                <span className="experience-date">JAN–MAY 2026</span>
+              </span>
+              <span className="experience-card-main">
+                <strong>UTSA SBDC</strong>
+                <span>Business Development Intern</span>
+                <span className="experience-arrow" aria-hidden="true">→</span>
+              </span>
+            </button>
+
+            <button className="experience-card" onClick={() => openSection("experience")}>
+              <span className="experience-card-topline">
+                <span className="experience-type">UI/UX · FRONT-END</span>
+                <span className="experience-date">MAY–AUG 2025</span>
+              </span>
+              <span className="experience-card-main">
+                <strong>434 MEDIA</strong>
+                <span>UI/UX Front-End Developer</span>
+                <span className="experience-arrow" aria-hidden="true">→</span>
+              </span>
+              <span className="experience-tech">REACT · NEXT.JS · TAILWIND CSS</span>
+            </button>
+
+            <div className="education-summary">
+              <span>UTSA · COMPUTER SCIENCE</span>
+              <span>Math minor · 3.9 GPA · May 2027</span>
             </div>
           </section>
 
           {/* PROJECTS button */}
             <section className="section">
-              <button className="section-toggle" onClick={() => VOID}>
+              <div className="section-toggle section-heading">
                 <span>PROJECTS</span>
-                <span className="section-toggle-icon"> </span>
-              </button>
+                <span className="projects-key">SELECTED WORK</span>
+              </div>
 
   {/* INDENTED CLICKABLE PROJECTS */}
   <div className="sub-projects">
 
-    <button 
-      className="sub-toggle"
-      onClick={() => openSection("swe-ui-project-2026")}
-    >
-      <span className="sub-label">SWE & UI/UX LIVE WEBSITE</span>
-      <span className="sub-time">Scrum Master and API Engineer</span>
-    </button>
-    <button
-      className="sub-toggle"
-      onClick={() => openSection("proj-ai-learning-agent")}
-    >
-      <span className="sub-label">TheGlassHero: TEACHING MACHINE LEARNING</span>
-      <span className="sub-time">Reasearch Paper and Process</span>
-    </button>
+    <div className="project-entry project-entry-active">
+      <button className="sub-toggle" onClick={() => openSection("proj-idle-scholar")}>
+        <span className="sub-copy">
+          <span className="project-badge">● ACTIVE · LIVE USERS · REACT</span>
+          <span className="sub-label">IDLE SCHOLAR</span>
+          <span className="sub-time">Actively building · RowdyHacks 1st Overall</span>
+        </span>
+        <span className="project-arrow" aria-hidden="true">→</span>
+      </button>
+      <a className="project-live-link" href="https://idlescholar.com" target="_blank" rel="noreferrer">
+        TRY IT ↗
+      </a>
+    </div>
 
-    <button
-      className="sub-toggle"
-      onClick={() => openSection("proj-idle-scholar")}
-    >
-      <span className="sub-label">IDLE SCHOLAR</span>
-      <span className="sub-time"> RH 1st Overall, Oct '25 → present</span>
-    </button>
+    <div className="project-entry project-entry-featured">
+      <button className="sub-toggle" onClick={() => openSection("swe-ui-project-2026")}>
+        <span className="sub-copy">
+          <span className="project-badge">LIVE · REACT</span>
+          <span className="sub-label">SWE & UI/UX CLIENT WEBSITE</span>
+          <span className="sub-time">Scrum Master · API Engineer</span>
+        </span>
+        <span className="project-arrow" aria-hidden="true">→</span>
+      </button>
+      <a className="project-live-link" href="https://software-eng2026.vercel.app" target="_blank" rel="noreferrer">
+        OPEN LIVE ↗
+      </a>
+    </div>
+    <div className="project-entry project-entry-featured">
+      <button className="sub-toggle" onClick={() => openSection("proj-ai-learning-agent")}>
+        <span className="sub-copy">
+          <span className="project-badge">LIVE · ML EDUCATION</span>
+          <span className="sub-label">TheGlassHero: TEACHING MACHINE LEARNING</span>
+          <span className="sub-time">Research paper · interactive learning game</span>
+        </span>
+        <span className="project-arrow" aria-hidden="true">→</span>
+      </button>
+      <a
+        className="project-live-link"
+        href="https://camiicatt.github.io/theGlassBox/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        TRY LIVE ↗
+      </a>
+    </div>
 
     <button
       className="sub-toggle"
@@ -697,20 +837,26 @@ function App() {
     </button>
   
     
-    <button
-      className="sub-toggle"
-      onClick={() => openSection("proj-vemosvamos")}
-    >
-      <span className="sub-label">VEMOSVAMOS</span>
-      <span className="sub-time">Aug 2025</span>
-    </button>
+    <div className="project-entry project-entry-featured">
+      <button className="sub-toggle" onClick={() => openSection("proj-vemosvamos")}>
+        <span className="sub-copy">
+          <span className="project-badge">LIVE · NEXT.JS · UI/UX</span>
+          <span className="sub-label">VEMOSVAMOS</span>
+          <span className="sub-time">Responsive bilingual client website</span>
+        </span>
+        <span className="project-arrow" aria-hidden="true">→</span>
+      </button>
+      <a className="project-live-link" href="https://www.vemosvamos.com/" target="_blank" rel="noreferrer">
+        OPEN LIVE ↗
+      </a>
+    </div>
 
     <button
       className="sub-toggle"
       onClick={() => openSection("proj-yahoopress")}
     >
-      <span className="sub-label">YAHOO PRESENTATION</span>
-      <span className="sub-time">July 2025</span>
+      <span className="sub-label">YAHOO CAPSTONE</span>
+      <span className="sub-time">Agile · UX Research · Jul 2025</span>
     </button>
 
     <button
@@ -777,6 +923,33 @@ function App() {
             </div>
 
             {renderModalContent()}
+
+            {activeProjectIndex >= 0 && (
+              <nav className="modal-project-nav" aria-label="Browse projects">
+                <button
+                  className="modal-project-nav-btn"
+                  onClick={() => browseProject(-1)}
+                  aria-label={`Previous project: ${projectSections[(activeProjectIndex - 1 + projectSections.length) % projectSections.length].label}`}
+                >
+                  <span aria-hidden="true">←</span>
+                  <span>
+                    <small>PREVIOUS</small>
+                    {projectSections[(activeProjectIndex - 1 + projectSections.length) % projectSections.length].label}
+                  </span>
+                </button>
+                <button
+                  className="modal-project-nav-btn modal-project-nav-next"
+                  onClick={() => browseProject(1)}
+                  aria-label={`Next project: ${projectSections[(activeProjectIndex + 1) % projectSections.length].label}`}
+                >
+                  <span>
+                    <small>NEXT PROJECT</small>
+                    {projectSections[(activeProjectIndex + 1) % projectSections.length].label}
+                  </span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </nav>
+            )}
           </div>
         </div>
       )}
