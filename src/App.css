@@ -135,7 +135,7 @@
       transparent 25%,
       rgba(192, 132, 252, 0.17) 0 50%,
       transparent 0 75%,
-      rgba(56, 189, 248, 0.1) 0
+      rgba(255, 255, 255, 0.14) 0
     ) 0 0 / 4px 4px,
     linear-gradient(90deg, rgba(76, 29, 149, 0.26), transparent 85%);
   transition: opacity 90ms steps(3, end);
@@ -253,9 +253,9 @@
   background: conic-gradient(
     from 90deg at 1px 1px,
     transparent 25%,
-    rgba(192, 132, 252, 0.15) 0 50%,
-    transparent 0 75%,
-    rgba(56, 189, 248, 0.12) 0
+      rgba(192, 132, 252, 0.15) 0 50%,
+      transparent 0 75%,
+      rgba(126, 34, 206, 0.18) 0
   ) 0 0 / 4px 4px;
   transition: opacity 60ms steps(2, end);
 }
@@ -264,7 +264,7 @@
 .pixel-profile:focus-visible {
   transform: translate(-3px, -3px);
   box-shadow:
-    5px 5px 0 #38bdf8,
+    5px 5px 0 #c084fc,
     10px 10px 0 rgba(76, 29, 149, 0.75);
   outline: none;
 }
@@ -277,10 +277,10 @@
 .pixel-profile-bar {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #38bdf8;
+  border-bottom: 2px solid #c084fc;
   padding: 0.35rem 0.6rem;
   background: rgba(15, 23, 42, 0.94);
-  color: #7dd3fc;
+  color: #d8b4fe;
   font-size: 0.6rem;
   letter-spacing: 0.14em;
 }
@@ -671,13 +671,13 @@
 
 .experience-card-featured {
   background: linear-gradient(90deg, rgba(8, 47, 73, 0.55), rgba(15, 23, 42, 0.1));
-  box-shadow: inset 3px 0 0 #38bdf8;
+  box-shadow: inset 3px 0 0 #f8fafc;
 }
 
 .experience-card-featured::after {
   background: repeating-linear-gradient(
     to bottom,
-    #38bdf8 0 4px,
+    #f8fafc 0 4px,
     transparent 4px 8px
   );
 }
@@ -686,9 +686,9 @@
 .experience-card:focus-visible {
   transform: translate(-2px, -2px);
   box-shadow:
-    inset 3px 0 0 #7dd3fc,
-    4px 4px 0 #0c4a6e,
-    7px 7px 0 rgba(56, 189, 248, 0.22);
+    inset 3px 0 0 #ffffff,
+    4px 4px 0 #475569,
+    7px 7px 0 rgba(255, 255, 255, 0.15);
   outline: none;
 }
 
@@ -706,7 +706,7 @@
 
 .experience-type,
 .experience-tech {
-  color: #7dd3fc;
+  color: #f8fafc;
   font-size: 0.58rem;
   letter-spacing: 0.12em;
 }
@@ -738,7 +738,7 @@
 
 .experience-card:hover .experience-arrow,
 .experience-card:focus-visible .experience-arrow {
-  color: #7dd3fc;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
@@ -821,13 +821,13 @@
 
 .project-entry-featured {
   background: linear-gradient(90deg, rgba(8, 47, 73, 0.42), rgba(15, 23, 42, 0.06));
-  box-shadow: inset 3px 0 0 #38bdf8;
+  box-shadow: inset 3px 0 0 #f8fafc;
 }
 
 .project-entry-featured::after {
   background: repeating-linear-gradient(
     to bottom,
-    #38bdf8 0 3px,
+    #f8fafc 0 3px,
     transparent 3px 7px
   );
 }
@@ -907,7 +907,7 @@
 
 .project-badge {
   width: fit-content;
-  color: #7dd3fc;
+  color: #f8fafc;
   font-size: 0.58rem;
   letter-spacing: 0.12em;
 }
@@ -921,7 +921,7 @@
 
 .sub-toggle:hover .project-arrow,
 .sub-toggle:focus-visible .project-arrow {
-  color: #7dd3fc;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
@@ -1052,7 +1052,7 @@
 
 .sub-toggle:not(.project-entry .sub-toggle):hover::before,
 .sub-toggle:not(.project-entry .sub-toggle):focus-visible::before {
-  color: #7dd3fc;
+  color: #ffffff;
   transform: translateX(3px);
 }
 
